@@ -1,6 +1,8 @@
 #Little comment
 
 #Comment: build your own defintions
+import time
+
 def greeting():
     print("Hello")
 
@@ -10,7 +12,7 @@ def greeting():
 
 def living_room():
     print("you are in the living room")
-    choice = int(input("1 to enter kitchen\n2 to enter hallway\n3 to open front door"))
+    choice = int(input("1 to enter kitchen\n2 to enter hallway\n3 to open front door\n> "))
     if choice == 1:
         kitchen()
     elif choice == 2:
@@ -23,23 +25,33 @@ def living_room():
 
 def front_door():
     print("the door is locked from the outside")
-    choice = int(input("1 to try open door using force"))
+
     if wardrobe_count >= 2:
-        choice = int(input("1 to try open the door using force\n2 to use the spoo-key"))
-    if choice == 1:
-        print("you could not open the door because it is locked")
-        living_room()
-    elif choice == 2:
-        print("congrats")
-        success()
+        choice = int(input("1 to try open the door using force\n2 to use the spoo-key\n> "))
+        if choice == 1:
+            print("you could not open the door because it is locked")
+            living_room()
+        elif choice == 2:
+            print("congrats")
+            success()
+        else:
+            print("try again")
+            front_door()
     else:
-        print("try again")
-        front_door()
+        choice = int(input("1 to try open door using force\n> "))
+        if choice == 1:
+            print("you could not open the door because it is locked")
+            living_room()
+        else:
+            print("try again")
+            front_door()
+
+
 
 
 def kitchen():
     print("you are in the kitchen")
-    choice = int(input("1 to enter living room\n2 to enter bathroom\n3 to look at calender"))
+    choice = int(input("1 to enter living room\n2 to enter bathroom\n3 to look at calender\n> "))
     if choice == 1:
         living_room()
     elif choice == 2:
@@ -53,7 +65,7 @@ def kitchen():
 
 def bathroom():
     print("you are in the bathroom")
-    choice = int(input("1 to enter hallway\n2 to enter kitchen\n3 to look in mirror"))
+    choice = int(input("1 to enter hallway\n2 to enter kitchen\n3 to look in mirror\n> "))
     if choice == 1:
         hallway()
     elif choice == 2:
@@ -80,7 +92,7 @@ def mirror():
     elif mirror_count == 6:
         print("this is your fault not mine")
         death_death()
-    choice = int(input("1 to keep looking in mirror\n2 to stop looking in mirror"))
+    choice = int(input("1 to keep looking in mirror\n2 to stop looking in mirror\n> "))
     if choice == 1:
         mirror()
     elif choice == 2:
@@ -92,7 +104,7 @@ def mirror():
 
 def bedroom():
     print("you are in the bedroom")
-    choice = int(input("1 to enter hallway\n2 to enter bathroom\n3 to look at window"))
+    choice = int(input("1 to enter hallway\n2 to enter bathroom\n3 to look at window\n> "))
     if choice == 1:
         hallway()
     elif choice == 2:
@@ -105,7 +117,7 @@ def bedroom():
 
 def hallway():
     print("you are in the hallway")
-    choice = int(input("1 to enter living room\n2 to enter bathroom\n3 to go up the stairs to the attic"))
+    choice = int(input("1 to enter living room\n2 to enter bathroom\n3 to go up the stairs to the attic\n> "))
     if choice == 1:
         living_room()
     elif choice == 2:
@@ -118,7 +130,7 @@ def hallway():
 
 def window():
     print("you look at the window")
-    choice = int(input("1 to keep looking at window\n2 to stop looking at window"))
+    choice = int(input("1 to keep looking at window\n2 to stop looking at window\n> "))
     if choice == 1:
         print("it is a window")
         window()
@@ -134,7 +146,7 @@ def window():
 
 def attic():
     print("you are in the attic")
-    choice = int(input("1 to go back downstairs\n2 to look at wardrobe"))
+    choice = int(input("1 to go back downstairs\n2 to look at wardrobe\n> "))
     if choice == 1:
         print("you went back downstairs")
         hallway()
@@ -162,7 +174,7 @@ def wardrobe():
         print("narnia is cold...you should have brought a jacket")
         death_death()
 
-    choice = int(input("1 to look inside wardrobe\n2 to stop looking at wardrobe"))
+    choice = int(input("1 to look inside wardrobe\n2 to stop looking at wardrobe\n> "))
     if choice == 1:
         wardrobe()
     elif choice == 2:
@@ -186,6 +198,7 @@ def death_death():
     print("::    ::::: ::  ::::: ::      :::: ::   ::   :: ::::   :::: ::")
     print(":      : :  :    : :  :      :: :  :   :    : :: ::   :: :  :")
 
+    time.sleep(10)
     sys.exit(0)
 
 def success():
@@ -197,6 +210,7 @@ def success():
     print(".-,//|(_       \\   (__) )(        |||_.-,_|___|_,-.|||_       .-,_|___|_,-._// \\_  ")
     print(" \_) (__)     (__)      (__)      (__)_)\_)-' '-(_/(__)_)       \_)-' '-(_/(__) (__) ")
 
+    time.sleep(10)
     sys.exit(0)
 
 #Start Code Here:
@@ -209,5 +223,6 @@ print("\  :` `. |  /  | |/   |  | |  |/   |  | |  ||      /,  .-')     /        
 print(" '..`''.)|  |_.' |\_) |  |\|  |\_) |  |\|  ||     ' _)(OO  \   /          '..`''.)(|  '--.\| |_.'  | |  |_.' |/_) |OO  )|       |")
 print("\       /|  |        `'  '-'  '   `'  '-'  '|  |\   \  `-./  /.__)       \       / |  `---.|  | |  | |  |\  \(_'  '--'\ |  | |  |")
 print(" `-----' `--'          `-----'      `-----' `--' '--'    `--'             `-----'  `------'`--' `--' `--' '--'  `-----' `--' `--' ")
+time.sleep(5)
 print("you wake up suddenly and look around the room")
 bedroom()
